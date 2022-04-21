@@ -1,5 +1,6 @@
 const note = require('express').Router();
 const { readAndAppend } = require('../helpers/fsUtils');
+const { readFromFile } = require('../helpers/fsUtils');
 
 note.get('/', (req, res) =>
   readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)))
