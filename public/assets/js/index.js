@@ -31,6 +31,7 @@ const getNotes = () =>
     headers: {
       'Content-Type': 'application/json',
     },
+    
   })
 
 
@@ -136,6 +137,7 @@ const renderNoteList = async (notes) => {
     spanEl.classList.add('list-item-title');
     spanEl.innerText = text;
     spanEl.addEventListener('click', handleNoteView);
+    console.log(spanEl);
 
     liEl.append(spanEl);
 

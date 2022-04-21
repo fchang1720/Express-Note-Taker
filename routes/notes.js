@@ -1,21 +1,22 @@
 const note = require('express').Router();
 const { readAndAppend } = require('../helpers/fsUtils');
 const { readFromFile } = require('../helpers/fsUtils');
+const uuid = require('../helpers/uuid')
 
-note.get('/', (req, res) =>
+note.get('/', (req, res) => {
   readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)))
-);
+});
 
 note.post('/', (req, res) => {
-    // Destructuring assignment for the items in req.body
+    
     const { title, text } = req.body;
   
-    // If all the required properties are present
     if (title && text) {
-      // Variable for the object we will save
+      
       const newNote = {
         title,
         text,
+        note_id: uuid(),
 
       };
   
